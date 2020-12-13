@@ -7,19 +7,19 @@ const mouseStalker = () => {
             width: $cursor.outerWidth(),
             coorX: 0,
             coorY: 0,
-            delay: 0.001
+            delay: 0.001,
         },
         delay: {
             width: $delay.outerWidth(),
             coorX: 0,
             coorY: 0,
-            delay: 10
+            delay: 10,
         },
     };
     const activeClass = 'active';
-    let clipRadius = 2.5 / 2;
+    let clipRadius = 40 / 2;
     let clipScale = 1;
-    let clipPathCoor = `ellipse(${clipRadius * clipScale}rem ${clipRadius * clipScale}rem at 50% 50%)`;
+    let clipPathCoor = `ellipse(${clipRadius * clipScale}px ${clipRadius * clipScale}px at 50% 50%)`;
     // カーソルの遅延アニメーション
     // ほんの少しだけ遅延させる (0.001秒)
     TweenMax.to(
@@ -31,15 +31,12 @@ const mouseStalker = () => {
                 paramsArray.delay.coorX += (paramsArray.cursor.coorX - paramsArray.delay.coorX) / paramsArray.delay.delay;
                 paramsArray.delay.coorY += (paramsArray.cursor.coorY - paramsArray.delay.coorY) / paramsArray.delay.delay;
 
-                clipPathCoor = `ellipse(${clipRadius * clipScale}rem ${clipRadius * clipScale}rem at ${paramsArray.delay.coorX}px ${paramsArray.delay.coorY}px)`;
-                console.log(clipRadius, clipScale, paramsArray.delay.coorX, paramsArray.delay.coorY, clipPathCoor);
+                clipPathCoor = `ellipse(${clipRadius * clipScale}px ${clipRadius * clipScale}px at ${paramsArray.delay.coorX}px ${paramsArray.delay.coorY}px)`;
                 // delay
                 TweenMax.set(
                     $delay,
                     {
                         css: {
-//                            left: paramsArray.delay.coorX - (paramsArray.delay.width / 2),
-//                            top: paramsArray.delay.coorY - (paramsArray.delay.width / 2),
                             clipPath: clipPathCoor,
                         }
                     }
@@ -51,7 +48,7 @@ const mouseStalker = () => {
                     {
                         css: {
                             left: paramsArray.cursor.coorX - (paramsArray.cursor.width / 2),
-                            top: paramsArray.cursor.coorY - (paramsArray.cursor.width / 2)
+                            top: paramsArray.cursor.coorY - (paramsArray.cursor.width / 2),
                         }
                     }
                 );
@@ -65,17 +62,11 @@ const mouseStalker = () => {
             $cursor.addClass(activeClass);
             $delay.addClass(activeClass);
             clipScale = 2;
-//            $delay.css({
-//                clipPath: clipPathCoor,
-//            });
         },
         mouseleave: function () {
             $cursor.removeClass(activeClass);
             $delay.removeClass(activeClass);
             clipScale = 1;
-//            $delay.css({
-//                clipPath: '',
-//            });
         },
     });
 
