@@ -7,20 +7,18 @@ body {
     // 元々のマウスカーソルを消す
     cursor: none;
     // 端にカーソルを持って行ったときにディレイの部分だけはみ出てスクロールバーが表示されてしまうのを抑止
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .c-mouseStalker {
     pointer-events: none; // イベント反応させなくする
     width: 100%;
     height: 100%;
-    padding-top: 100%;
     position: absolute;
     top: 0;
     left: 0;
     &_cursor,
     &_delay {
-        border-radius: 50%;
         position: absolute;
         top: 0;
         left: 0;
@@ -31,6 +29,7 @@ body {
         height: 0.5rem;
         background-color: f.$color;
         z-index: 10001;
+        border-radius: 50%;
     }
     &_delay {
         $delayRadius: 40px;
@@ -38,9 +37,6 @@ body {
 //        height: $delayRadius;
         width: 100%;
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
         background-color: f.$main-color;
         z-index: 10000;
         transition: clip-path ease 0.3s;
@@ -55,6 +51,7 @@ body {
                 image: url("../img/vampire_stoker.jpg");
                 attachment: fixed;
                 size: cover;
+                position: center center;
             }
             opacity: 1;
             // at 以降は円の中心の定義

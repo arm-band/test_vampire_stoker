@@ -13,11 +13,12 @@ const mouseStalker = () => {
             width: $delay.outerWidth(),
             coorX: 0,
             coorY: 0,
-            delay: 10,
+            delay: 6,
         },
     };
     const activeClass = 'active';
-    let clipRadius = 40 / 2;
+//    let clipRadius = 40 / 2;
+    let clipRadius = 100 / 2;
     let clipScale = 1;
     let clipPathCoor = `ellipse(${clipRadius * clipScale}px ${clipRadius * clipScale}px at 50% 50%)`;
     // カーソルの遅延アニメーション
@@ -57,7 +58,7 @@ const mouseStalker = () => {
     );
 
     // mouse hover
-    $('#address').on({
+    $('#remilia').on({
         mouseenter: function () {
             $cursor.addClass(activeClass);
             $delay.addClass(activeClass);
