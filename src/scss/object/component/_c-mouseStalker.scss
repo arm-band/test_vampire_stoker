@@ -43,7 +43,7 @@ body {
         left: 0;
         background-color: f.$main-color;
         z-index: 10000;
-        transition: transform ease 0.3s;
+        transition: clip-path ease 0.3s;
         opacity: 0.4;
         // at 以降は円の中心の定義
         clip-path: ellipse($delayRadius / 2 $delayRadius / 2 at 50% 50%);
