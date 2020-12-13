@@ -52,23 +52,40 @@ const mouseStalker = () => {
         }
     );
 
-    // get mouse coordinate
-    $(document).on('mousemove', function (e) {
-        paramsArray.cursor.coorX = e.pageX;
-        paramsArray.cursor.coorY = e.pageY;
-    });
-
     // mouse hover
     const activeClass = 'active';
+    let clipRadius = 2.5 / 2;
+    let clipScale = 1;
+    let clipPathCoor = `ellipse(${clipRadius * clipScale}rem ${clipRadius * clipScale}rem at 50% 50%)`;
     $('#address').on({
         mouseenter: function () {
             $cursor.addClass(activeClass);
             $delay.addClass(activeClass);
+            clipScale = 2;
+//            $delay.css({
+//                clipPath: clipPathCoor,
+//            });
         },
         mouseleave: function () {
             $cursor.removeClass(activeClass);
             $delay.removeClass(activeClass);
+            clipScale = 1;
+//            $delay.css({
+//                clipPath: '',
+//            });
         },
+    });
+
+    // get mouse coordinate
+    $(document).on('mousemove', function (e) {
+        paramsArray.cursor.coorX = e.pageX;
+        paramsArray.cursor.coorY = e.pageY;
+
+        clipPathCoor = `ellipse(${clipRadius * clipScale}rem ${clipRadius * clipScale}rem at ${paramsArray.cursor.coorX}px ${paramsArray.cursor.coorY}px)`;
+        console.log(e.pageX, e.pageY, paramsArray.delay.coorX, paramsArray.delay.coorY, clipPathCoor);
+        $delay.css({
+            clipPath: clipPathCoor,
+        });
     });
 };
 

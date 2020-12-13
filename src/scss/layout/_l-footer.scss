@@ -3,8 +3,6 @@
 @use "../foundation" as f;
 
 .l-footer {
-    position: fixed;
-    bottom: 0;
-    background-color: f.$main-color;
+    background-color: f.$link-color;
     color: f.$color;
 }

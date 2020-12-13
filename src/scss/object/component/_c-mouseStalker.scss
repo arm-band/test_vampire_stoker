@@ -11,6 +11,13 @@ body {
 }
 
 .c-mouseStalker {
+    pointer-events: none; // イベント反応させなくする
+    width: 100%;
+    height: 100%;
+    padding-top: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     &_cursor,
     &_delay {
         border-radius: 50%;
@@ -27,16 +34,31 @@ body {
     }
     &_delay {
         $delayRadius: 2.5rem;
-        width: $delayRadius;
-        height: $delayRadius;
+//        width: $delayRadius;
+//        height: $delayRadius;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
         background-color: f.$main-color;
         z-index: 10000;
         transition: transform ease 0.3s;
         opacity: 0.4;
+        // at 以降は円の中心の定義
+        clip-path: ellipse($delayRadius / 2 $delayRadius / 2 at 50% 50%);
         &.active {
             $activeTimes: 2;
-            transform: scale($activeTimes);
-            background-color: f.$main-color_l;
+ //           transform: scale($activeTimes);
+//            background-color: f.$main-color_l;
+            background: {
+                image: url("../img/vampire_stoker.jpg");
+                attachment: fixed;
+                size: cover;
+            }
+            opacity: 1;
+            // at 以降は円の中心の定義
+            clip-path: ellipse($delayRadius * $activeTimes / 2 $delayRadius * $activeTimes / 2 at 50% 50%);
         }
     }
 }
