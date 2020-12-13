@@ -32,7 +32,7 @@ const mouseStalker = () => {
                 paramsArray.delay.coorY += (paramsArray.cursor.coorY - paramsArray.delay.coorY) / paramsArray.delay.delay;
 
                 clipPathCoor = `ellipse(${clipRadius * clipScale}rem ${clipRadius * clipScale}rem at ${paramsArray.delay.coorX}px ${paramsArray.delay.coorY}px)`;
-                console.log(`${clipRadius * clipScale}rem`, paramsArray.delay.coorX, paramsArray.delay.coorY, clipPathCoor);
+                console.log(clipRadius, clipScale, paramsArray.delay.coorX, paramsArray.delay.coorY, clipPathCoor);
                 // delay
                 TweenMax.set(
                     $delay,
@@ -62,17 +62,17 @@ const mouseStalker = () => {
     // mouse hover
     $('#address').on({
         mouseenter: function () {
-//            $cursor.addClass(activeClass);
-//            $delay.addClass(activeClass);
-//            clipScale = 2;
+            $cursor.addClass(activeClass);
+            $delay.addClass(activeClass);
+            clipScale = 2;
 //            $delay.css({
 //                clipPath: clipPathCoor,
 //            });
         },
         mouseleave: function () {
-//            $cursor.removeClass(activeClass);
-//            $delay.removeClass(activeClass);
-//            clipScale = 1;
+            $cursor.removeClass(activeClass);
+            $delay.removeClass(activeClass);
+            clipScale = 1;
 //            $delay.css({
 //                clipPath: '',
 //            });
