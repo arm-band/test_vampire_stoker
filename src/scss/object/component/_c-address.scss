@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@use "../../foundation" as f;
+
+.c-address {
+    &_tel {
+        &::before {
+            @include f.pseudoColon("tel");
+            text-transform: uppercase;
+        }
+    }
+    &_postalcode {
+        &::before {
+            content: "〒";
+        }
+    }
+}

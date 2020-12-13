@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@use "../../foundation" as f;
+
+body {
+    position: relative;
+    // 元々のマウスカーソルを消す
+    cursor: none;
+    // 端にカーソルを持って行ったときにディレイの部分だけはみ出てスクロールバーが表示されてしまうのを抑止
+    overflow: hidden;
+}
+
+.c-mouseStalker {
+    &_cursor,
+    &_delay {
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none; // イベント反応させなくする
+    }
+    &_cursor {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: f.$color;
+        z-index: 10001;
+    }
+    &_delay {
+        $delayRadius: 2.5rem;
+        width: $delayRadius;
+        height: $delayRadius;
+        background-color: f.$main-color;
+        z-index: 10000;
+        transition: transform ease 0.3s;
+        opacity: 0.4;
+        &.active {
+            $activeTimes: 2;
+            transform: scale($activeTimes);
+            background-color: f.$main-color_l;
+        }
+    }
+}

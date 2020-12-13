@@ -1,0 +1,28 @@
+<%- include('partial/_head') %>
+<body>
+<%- include('partial/_header') %>
+<main class="l-main">
+    <section class="container py-5">
+        <h1><i class="fas fa-fw fa-long-arrow-alt-up mr-2" aria-hidden="true"></i><%= parameters.title %></h1>
+        <p><%= parameters.description %></p>
+    </section>
+    <section class="container pb-5">
+        <h2>連絡先情報</h2>
+        <div class="list-group mb-3" id="address">
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><%= parameters.author %></h5>
+                    <small>※住所・郵便番号・電話番号はいずれもダミーです</small>
+                </div>
+                <p class="mb-1"><span class="c-address c-address_postalcode mr-1"><%= parameters.postalcode %></span> <span class="address"><%= parameters.address %></span></p>
+                <small><a href="tel:<%= parameters.tel %>"><span class="c-address c-address_tel mr-1"><%= parameters.tel %></span></a></small>
+            </div>
+        </div>
+        <p>※住所・郵便番号・電話番号はいずれもダミーです。</p>
+    </section>
+</main>
+<%- include('partial/_footer') %>
+<%- include('partial/_mouseStalker') %>
+<%- include('partial/_js_loader') %>
+</body>
+</html>

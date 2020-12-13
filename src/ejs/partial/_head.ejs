@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%
+    parameters = {
+        sitename: 'Vampire Stoker',
+        title: 'Home',
+        description: 'マウスストーカーのテストです。',
+        author: 'アルム＝バンド',
+        copyright: 2020,
+        themecolor: '#ccc',
+        url: 'https://localhost:3000/',
+        ogp: {
+            card: 'photo',
+            account: 'Bredtn_1et',
+            type: 'website',
+            image: 'img/hinomotogo.png'
+        },
+        address: '北海道札幌市北区丸山町字辛亥五ノ村30-90',
+        postalcode: '001-0000',
+        tel: '000-000-0000'
+    }
+-%>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= parameters.title %> - <%= parameters.sitename %></title>
+    <meta name="description" content="<%= parameters.description %>">
+    <meta name="author" content="<%= parameters.author %>">
+
+    <link href="./apple-touch-icon.png" rel="apple-touch-icon">
+    <meta name="theme-color" content="<%= parameters.themecolor %>">
+
+    <meta name="twitter:card" content="<%= parameters.ogp.card %>">
+    <meta name="twitter:site" content="@<%= parameters.ogp.account %>">
+    <meta property="og:type" content="<%= parameters.ogp.type %>">
+    <meta name="og:title" content="<%= parameters.title %>">
+    <meta name="og:site_name" content="<%= parameters.sitename %>">
+    <meta name="og:description" content="<%= parameters.description %>">
+    <meta name="og:image" content="<%= parameters.url %><%= parameters.ogp.image %>">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="./css/index.css" rel="stylesheet">
+</head>
