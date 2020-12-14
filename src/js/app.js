@@ -18,7 +18,7 @@ const mouseStalker = () => {
     };
     const activeClass = 'active';
 //    let clipRadius = 40 / 2;
-    let clipRadius = 100 / 2;
+    let clipRadius = 100 / 4;
     let clipScale = 1;
     let clipPathCoor = `ellipse(${clipRadius * clipScale}px ${clipRadius * clipScale}px at 50% 50%)`;
     // カーソルの遅延アニメーション
@@ -62,7 +62,7 @@ const mouseStalker = () => {
         mouseenter: function () {
             $cursor.addClass(activeClass);
             $delay.addClass(activeClass);
-            clipScale = 2;
+            clipScale = 4;
         },
         mouseleave: function () {
             $cursor.removeClass(activeClass);

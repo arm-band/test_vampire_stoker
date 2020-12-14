@@ -6,17 +6,27 @@ body {
     position: relative;
     // 元々のマウスカーソルを消す
     cursor: none;
-    // 端にカーソルを持って行ったときにディレイの部分だけはみ出てスクロールバーが表示されてしまうのを抑止
-    overflow-x: hidden;
 }
 
 .c-mouseStalker {
-    pointer-events: none; // イベント反応させなくする
+    // イベント反応させなくする
+    pointer-events: none;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    &_wrapper {
+        // イベント反応させなくする
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        // 端にカーソルを持って行ったときにディレイの部分だけはみ出てスクロールバーが表示されてしまうのを抑止
+        overflow: hidden;
+    }
     &_cursor,
     &_delay {
         position: absolute;
@@ -32,21 +42,17 @@ body {
         border-radius: 50%;
     }
     &_delay {
-        $delayRadius: 40px;
-//        width: $delayRadius;
-//        height: $delayRadius;
+        $delayRadius: 100px / 4;
         width: 100%;
         height: 100%;
         background-color: f.$main-color;
         z-index: 10000;
-        transition: clip-path ease 0.3s;
+        transition: clip-path ease 0.1s; // 遅くするともっさりした感じになる
         opacity: 0.4;
         // at 以降は円の中心の定義
-        clip-path: ellipse($delayRadius / 2 $delayRadius / 2 at 50% 50%);
+        clip-path: ellipse($delayRadius $delayRadius at 50% 50%);
         &.active {
-            $activeTimes: 2;
- //           transform: scale($activeTimes);
-//            background-color: f.$main-color_l;
+            $activeTimes: 4;
             background: {
                 image: url("../img/vampire_stoker.jpg");
                 attachment: fixed;
@@ -55,7 +61,7 @@ body {
             }
             opacity: 1;
             // at 以降は円の中心の定義
-            clip-path: ellipse($delayRadius * $activeTimes / 2 $delayRadius * $activeTimes / 2 at 50% 50%);
+            clip-path: ellipse($delayRadius * $activeTimes $delayRadius * $activeTimes at 50% 50%);
         }
     }
 }
